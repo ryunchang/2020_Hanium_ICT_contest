@@ -16,6 +16,9 @@ We use the [KarPlate Dataset](http://pr.gachon.ac.kr/ALPR.html) for training and
 ### *Pre-trained model*
 [best_weights.zip](https://bit.ly/2zt5hMc), 압축을 푼 후 **pre_trained** 폴더에 이동 후 테스트
 
+
+----
+
 ### *Demo*
 ```bash
 python predict.py -i data/test_images/4.jpg -w pre_trained/weights_best.pb
@@ -37,6 +40,7 @@ python evaluate.py -l data/test.json -i data/test_images/ -w saved_models/weight
 ```
 
 
+----
 
 #### *result*
 ![Image1](https://lab.hanium.or.kr/20_hi037f/workspace/raw/master/Korean-License-Plate-Recognition/result/Screenshot%20from%202020-08-14%2014-14-48.png)
