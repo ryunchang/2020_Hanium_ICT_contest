@@ -36,3 +36,11 @@ python predict.py -i data/test_images/4.jpg -w saved_models/weights_best.pb
 python evaluate.py -l data/test.json -i data/test_images/ -w saved_models/weights_best.pb
 ```
 
+
+
+#### *result*
+![Image1](https://lab.hanium.or.kr/20_hi037f/workspace/raw/master/Korean-License-Plate-Recognition/result/Screenshot%20from%202020-08-14%2014-14-48.png)
+
+![Image2](https://lab.hanium.or.kr/20_hi037f/workspace/raw/master/Korean-License-Plate-Recognition/result/Screenshot%20from%202020-08-14%2014-22-55.png)
+
+![Image3](https://lab.hanium.or.kr/20_hi037f/workspace/raw/master/Korean-License-Plate-Recognition/result/Screenshot%20from%202020-08-14%2014-30-50.png)
