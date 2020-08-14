@@ -1,4 +1,4 @@
-## **LPRnet을 이용한 대한민국 자동차 번호판 인식**
+# **LPRnet을 이용한 대한민국 자동차 번호판 인식**
 ---------
 This repository is based on the paper  [LPRNet: License Plate Recognition via Deep Neural Networks](https://arxiv.org/pdf/1806.10447.pdf). 
 We use the [KarPlate Dataset](http://pr.gachon.ac.kr/ALPR.html) for training and test model
@@ -43,7 +43,7 @@ python evaluate.py -l data/test.json -i data/test_images/ -w saved_models/weight
 
 --------
 
-#### *result*
+# *result*
 ![Image1](https://lab.hanium.or.kr/20_hi037f/workspace/raw/master/Korean-License-Plate-Recognition/result/Screenshot%20from%202020-08-14%2014-14-48.png)
 
 ![Image2](https://lab.hanium.or.kr/20_hi037f/workspace/raw/master/Korean-License-Plate-Recognition/result/Screenshot%20from%202020-08-14%2014-22-55.png)
