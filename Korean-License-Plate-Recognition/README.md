@@ -1,21 +1,20 @@
-## **Korean car license plate recognition using LPRNet**
+## **LPRnet을 이용한 대한민국 자동차 번호판 인식**
 This repository is based on the paper  [LPRNet: License Plate Recognition via Deep Neural Networks](https://arxiv.org/pdf/1806.10447.pdf). 
-
 We use the [KarPlate Dataset](http://pr.gachon.ac.kr/ALPR.html) for training and test model
 
-## **Dependencies**
+## **요구사항**
 - Python 3.6+
 - Tensorflow 1.15 or 2
 - Opencv 4
 - tqdm
 - editdistance
 
-## **Usage**
-### *Dataset*
-Download [data.zip](https://bit.ly/3egQ9jU), unzip and move into **data** folder for training and testing
+## **사용법**
+### *데이터 셋*
+[data.zip](https://bit.ly/3egQ9jU), 압축을 푼 후 **data** 폴더에 이동 후 테스트 및 학습
 
 ### *Pre-trained model*
-Download [best_weights.zip](https://bit.ly/2zt5hMc), unzip and move into **pre_trained** folder for testing
+[best_weights.zip](https://bit.ly/2zt5hMc), 압축을 푼 후 **pre_trained** 폴더에 이동 후 테스트
 
 ### *Demo*
 ```bash
