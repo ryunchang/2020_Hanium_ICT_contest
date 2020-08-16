@@ -22,6 +22,7 @@ classnames = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 
 def detection() :
     img_color = cv2.imread('1234.jpg', cv2.IMREAD_COLOR)
+    img_color = cv2.resize(img_color, dsize=(2688,1520), interpolation=cv2.INTER_AREA)
 
     copy_img=img_color.copy()
     img_gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
@@ -46,7 +47,7 @@ def detection() :
         rect_area=w*h
         aspect_ratio = float(w)/h
 
-        if (aspect_ratio >= 0.2) and (aspect_ratio<=1.0) and (rect_area>=100) and (rect_area<=1200):
+        if (aspect_ratio >= 0.2) and (aspect_ratio<=1.0) and (rect_area>=100) and (rect_area<=2400):
             cv2.rectangle(img_color,(x,y),(x+w, y+h), (0, 255,0), 1)
             box1.append(cv2.boundingRect(cnt))
 
@@ -63,11 +64,11 @@ def detection() :
     box1_3 = [[0 for j in range(4)] for i in range(len(box1))]
 
     for k in range(len(box1)):     
-        if box1[k][0]<450:
+        if box1[k][0]<800:
             box1_1[k]=box1[k]
-        elif box1[k][0]<800:
+        elif box1[k][0]<1600:
             box1_2[k]=box1[k]
-        elif box1[k][0]<1400:
+        elif box1[k][0]<2600:
             box1_3[k]=box1[k]
 
     box1=[box1_1,box1_2,box1_3]
@@ -79,7 +80,7 @@ def detection() :
             count=0
             for n in range(m+1,(len(box1[i])-1)):
                 delta_x=abs(box1[i][n+1][0]-box1[i][m][0])
-                if delta_x > 150:
+                if delta_x > 140:
                         break
                 delta_y =abs(box1[i][n+1][1]-box1[i][m][1])
                 if delta_x ==0:
@@ -99,9 +100,9 @@ def detection() :
 
 
 
-    number_plate_1=copy_img[box1[0][select[0]][1]-10:box1[0][select[0]][3]+box1[0][select[0]][1]+5,box1[0][select[0]][0]-5:130+box1[0][select[0]][0]]
-    number_plate_2=copy_img[box1[1][select[1]][1]-10:box1[1][select[1]][3]+box1[1][select[1]][1]+5,box1[1][select[1]][0]-5:130+box1[1][select[1]][0]]
-    number_plate_3=copy_img[box1[2][select[2]][1]-10:box1[2][select[2]][3]+box1[2][select[2]][1]+5,box1[2][select[2]][0]-5:130+box1[2][select[2]][0]]
+    number_plate_1=copy_img[box1[0][select[0]][1]-10:box1[0][select[0]][3]+box1[0][select[0]][1]+5,box1[0][select[0]][0]-5:180+box1[0][select[0]][0]]
+    number_plate_2=copy_img[box1[1][select[1]][1]-10:box1[1][select[1]][3]+box1[1][select[1]][1]+5,box1[1][select[1]][0]-5:180+box1[1][select[1]][0]]
+    number_plate_3=copy_img[box1[2][select[2]][1]-10:box1[2][select[2]][3]+box1[2][select[2]][1]+5,box1[2][select[2]][0]-5:180+box1[2][select[2]][0]]
 
     return (number_plate_1, number_plate_2, number_plate_3)
 
