@@ -120,7 +120,7 @@ def detection() :
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--image", required=True, help="path to image file")
+    # parser.add_argument("-i", "--image", required=True, help="path to image file")
     parser.add_argument("-w", "--weights", required=True, help="path to weights file")
     args = vars(parser.parse_args())
 
