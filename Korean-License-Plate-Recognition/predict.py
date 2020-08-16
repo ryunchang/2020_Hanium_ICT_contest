@@ -36,4 +36,11 @@ if __name__ == '__main__':
     print(time() - t)
     cv2.imshow("lp", img)
     cv2.waitKey(0)
+ 
+
+    t = time()
+    print(net.predict(x, classnames))
+    print(time() - t)
+    cv2.imshow("lp", img)
+    cv2.waitKey(0)
     cv2.destroyAllWindows()
