@@ -5,21 +5,15 @@ from  PIL import Image
 
 img_color = cv2.imread('1234.jpg', cv2.IMREAD_COLOR)
 copy_img=img_color.copy()
-cv2.namedWindow('Show Image')
-cv2.imshow('Show Image', img_color)
-cv2.waitKey(0)
+
 
 img_gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
-cv2.imshow('Show Image', img_gray)
-cv2.waitKey(0)
+
 
 blur = cv2.GaussianBlur(img_gray, (3,3), 2)
-cv2.imshow('Show Image', blur)
-cv2.waitKey(0)
+
 
 canny = cv2.Canny(blur, 100, 100)
-cv2.imshow('Show Image', canny)
-cv2.waitKey(0)
 
 
 
@@ -45,8 +39,6 @@ for i in range(len(contours)):
         cv2.rectangle(img_color,(x,y),(x+w, y+h), (0, 255,0), 1)
         box1.append(cv2.boundingRect(cnt))
 
-cv2.imshow('Show Image', img_color)
-cv2.waitKey(0)
 
 
 
