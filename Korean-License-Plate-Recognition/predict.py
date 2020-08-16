@@ -39,8 +39,8 @@ if __name__ == '__main__':
  
 
     
-    image="plate2.jpg"
-    img = cv2.imread(args["image"])
+    #image="plate2.jpg"
+    img = cv2.imread("plate2.jpg")
 
     x = np.expand_dims(resize_and_normailze(img), axis=0)
     t = time()
