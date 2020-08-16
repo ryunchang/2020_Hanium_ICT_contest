@@ -19,7 +19,9 @@ canny = cv2.Canny(blur, 100, 100)
 
 
 # contours로 같은에너지 네모박스
-contours,hierarchy = cv2.findContours(canny, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
+#contours,hierarchy = cv2.findContours(canny, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
+
+_, contours,_=cv2.findContours(canny,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 box1=[]
 
