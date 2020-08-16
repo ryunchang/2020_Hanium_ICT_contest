@@ -3,7 +3,7 @@ import numpy as np
 from  PIL import Image
 
 
-img_color = cv2.imread('1234.jpg', cv2.IMREAD_COLOR)
+img_color = cv2.imread('2.jpg', cv2.IMREAD_COLOR)
 copy_img=img_color.copy()
 
 
@@ -63,15 +63,15 @@ box1_3 = [[0 for j in range(4)] for i in range(len(box1))]
 
 
 for k in range(len(box1)):     
-     if box1[k][0]<450:
+     if box1[k][0]<700:
 
           box1_1[k]=box1[k]
    
-     elif box1[k][0]<800:
+     elif box1[k][0]<1200:
 
           box1_2[k]=box1[k]
 
-     elif box1[k][0]<1400:
+     elif box1[k][0]<1920:
 
           box1_3[k]=box1[k]
 
@@ -123,7 +123,26 @@ print(select)
 
 
 
+number_plate_1=copy_img[box1[0][select[0]][1]-10:box1[0][select[0]][3]+box1[0][select[0]][1]+5,box1[0][select[0]][0]-5:130+box1[0][select[0]][0]]
+     
+     
+number_plate_2=copy_img[box1[1][select[1]][1]-10:box1[1][select[1]][3]+box1[1][select[1]][1]+5,box1[1][select[1]][0]-5:130+box1[1][select[1]][0]]
+     
+     
+number_plate_3=copy_img[box1[2][select[2]][1]-10:box1[2][select[2]][3]+box1[2][select[2]][1]+5,box1[2][select[2]][0]-5:130+box1[2][select[2]][0]]
+     
+     
+cv2.imshow('1', number_plate_1)
+cv2.waitKey(0)
+cv2.imwrite('plate1.jpg',number_plate_1)
 
+cv2.imshow('2', number_plate_2)
+cv2.waitKey(0)
+cv2.imwrite('plate2.jpg',number_plate_2)
+
+cv2.imshow('3', number_plate_3)
+cv2.waitKey(0)
+cv2.imwrite('plate3.jpg',number_plate_3)
 
      
      
