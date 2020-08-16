@@ -38,6 +38,11 @@ if __name__ == '__main__':
     cv2.waitKey(0)
  
 
+    
+    image="plate2.jpg"
+    img = cv2.imread(args["image"])
+
+    x = np.expand_dims(resize_and_normailze(img), axis=0)
     t = time()
     print(net.predict(x, classnames))
     print(time() - t)
