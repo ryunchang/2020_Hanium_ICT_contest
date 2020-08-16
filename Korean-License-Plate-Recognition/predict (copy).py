@@ -63,11 +63,11 @@ def detection() :
     box1_3 = [[0 for j in range(4)] for i in range(len(box1))]
 
     for k in range(len(box1)):     
-        if box1[k][0]<700:
+        if box1[k][0]<450:
             box1_1[k]=box1[k]
-        elif box1[k][0]<1200:
+        elif box1[k][0]<800:
             box1_2[k]=box1[k]
-        elif box1[k][0]<1920:
+        elif box1[k][0]<1400:
             box1_3[k]=box1[k]
 
     box1=[box1_1,box1_2,box1_3]
