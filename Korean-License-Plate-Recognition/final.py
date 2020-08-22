@@ -125,39 +125,39 @@ def detection() :
     #     if plate_box[valid_plate[i]][0] == plate_box[valid_plate[i+1]][0] or plate_box[valid_plate[i]][1] == plate_box[valid_plate[i+1]][1] or plate_box[valid_plate[i]][2] == plate_box[valid_plate[i+1]][2] or plate_box[valid_plate[i]][3] == plate_box[valid_plate[i+1]][3]:
     #         valid_plate_temp.append(valid_plate[i])
 
-    valid_plate_temp=[]
+    valid_plate_temp=[0,0,0]
     cnt=[0,0,0]
     #차량 인식 과정
     for i in range(len(valid_plate)):
         if  plate_box[valid_plate[i]][0]<width*0.33:
             if cnt[0]==0:
-                valid_plate_temp.append(valid_plate[i])
+                valid_plate_temp[0] = valid_plate[i]
                 cnt[0] = 1
      
         elif plate_box[valid_plate[i]][0]<width*0.66:        
             if cnt[1]==0:
-                valid_plate_temp.append(valid_plate[i])
+                valid_plate_temp[1] = valid_plate[i]
                 cnt[1] = 2
      
         elif plate_box[valid_plate[i]][0]<width:
             if cnt[2]==0:
-                valid_plate_temp.append(valid_plate[i])
+                valid_plate_temp[2] = valid_plate[i]
                 cnt[2] = 3
     
     valid_plate=valid_plate_temp
     #번호판 출력과정 
     number_plate = {}
     for i in range(len(cnt)):
-        if not (cnt[i] == int(0)) :
+        if not (cnt[i] == 0) :
             number_plate[i+1] =  (copy_img[plate_box[valid_plate[i]][1] : plate_box[valid_plate[i]][3]+ plate_box[valid_plate[i]][1], plate_box[valid_plate[i]][0] :  plate_box[valid_plate[i]][0]  + plate_box[valid_plate[i]][2] ])
     
     for i in range(len(cnt)):
-        if not (cnt[i] == int(0)) :
+        if not (cnt[i] == 0) :
             cv2.imshow("show",number_plate[i+1])
             cv2.waitKey(0)
     
     for i in range(len(cnt)):
-        if not (cnt[i] == int(0)) :
+        if not (cnt[i] == 0) :
             cv2.imwrite(str(nowDatetime)+"plate_"+str(cnt[i])+".png",number_plate[i+1])
 
     return number_plate
