@@ -194,11 +194,10 @@ if __name__ == '__main__':
     # cv2.imshow("lp", img)
     # cv2.waitKey(0)
     if 1 in number_plate :
-        print("`1")
         img = number_plate[1]
         x = np.expand_dims(resize_and_normailze(img), axis=0)
         t = time()
-        print(net.predict(x, classnames))
+        print("첫번째 자동차 : ",net.predict(x, classnames))
         print(time() - t)
         cv2.imshow("1", img)
         cv2.waitKey(0)
@@ -208,7 +207,7 @@ if __name__ == '__main__':
         img = number_plate[2]
         x = np.expand_dims(resize_and_normailze(img), axis=0)
         t = time()
-        print(net.predict(x, classnames))
+        print("두번째 자동차 : ",net.predict(x, classnames))
         print(time() - t)
         cv2.imshow("2", img)
         cv2.waitKey(0)
@@ -218,7 +217,7 @@ if __name__ == '__main__':
         img = number_plate[3]
         x = np.expand_dims(resize_and_normailze(img), axis=0)
         t = time()
-        print(net.predict(x, classnames))
+        print("세번째 자동차 : ",net.predict(x, classnames))
         print(time() - t)
         cv2.imshow("3", img)
         cv2.waitKey(0)
