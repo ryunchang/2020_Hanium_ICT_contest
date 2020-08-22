@@ -1,0 +1,11 @@
+{
+  "name": "rest-api-exam",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "json-server --watch db.json --port 80"
+  },
+  "dependencies": {
+    "json-server": "^0.16.0"
+  }
+}
