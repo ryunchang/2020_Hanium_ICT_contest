@@ -1,12 +1,10 @@
-from cv2 import  cv2
+import  cv2
 from  PIL import Image
 import numpy as np
 import datetime
 
 now=datetime.datetime.now()
 nowDatetime = now.strftime('%Y-%m-%d %H- %M-%S ')
-
-
 
 
 img_color = cv2.imread("1234.jpg", cv2.IMREAD_COLOR)
@@ -19,7 +17,7 @@ copy_img=img_color.copy()
 gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray, (3,3), 3)
 canny = cv2.Canny(blur, 100, 100)
-contours,hierarchy = cv2.findContours(canny, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
+_,contours,hierarchy = cv2.findContours(canny, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
 
 
 #box1은 번호판 크기 ,box2 는 번호판안의 숫자 크기
