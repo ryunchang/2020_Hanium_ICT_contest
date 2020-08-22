@@ -11,6 +11,7 @@ import datetime
 from model import LPRNet
 from loader import resize_and_normailze
 
+url = 'rtsp://admin:12341234!@192.168.1.108:554/cam/realmonitor?channel=1&subtype=0'
 
 classnames = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
               "가", "나", "다", "라", "마", "거", "너", "더", "러",
@@ -23,8 +24,10 @@ classnames = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 def detection() :
     now=datetime.datetime.now()
     nowDatetime = now.strftime('%Y-%m-%d %H:%M:%S ')
-    
-    img_color = cv2.imread("1234.jpg", cv2.IMREAD_COLOR)
+
+    cap = cv2.VideoCapture(url)
+    ret, img_color = cap.read()
+    #img_color = cv2.imread("1234.jpg", cv2.IMREAD_COLOR)
     img_color = cv2.resize(img_color,dsize=(2688,1520),interpolation=cv2. INTER_AREA)
     
     height,width,channel = img_color.shape
