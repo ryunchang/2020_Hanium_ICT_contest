@@ -7,7 +7,7 @@ import numpy as np
 import cv2
 import tensorflow as tf
 from  PIL import Image
-
+import datetime
 from model import LPRNet
 from loader import resize_and_normailze
 
@@ -34,7 +34,7 @@ def detection() :
     gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (3,3), 3)
     canny = cv2.Canny(blur, 100, 100)
-    contours,hierarchy = cv2.findContours(canny, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
+    _, contours,hierarchy = cv2.findContours(canny, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
     
     
     #plate_box은 번호판 크기 ,number_box 는 번호판안의 숫자 크기
@@ -92,12 +92,12 @@ def detection() :
     
     
     #plate_box 에서 겹치는 부분 제거  미완성 부분 추가적인 수정 필요
-    plate_box_temp=[]
-    for i in range(len(plate_box)-1):   
-        if not (plate_box[i][0]+plate_box[i][2]) <= (plate_box[i+1][0]+plate_box[i+1][2]) and (plate_box[i][0]+plate_box[i][2])>=(plate_box[i+1][0]) and (plate_box[i][1]+plate_box[i][3])<=(plate_box[i+1][1]+plate_box[i+1][3]) and (plate_box[i][1]+plate_box[i][3])>=(plate_box[i+1][1]) :    
-            plate_box_temp.append(plate_box[i])
-    plate_box=plate_box_temp
-    
+    #plate_box_temp=[]
+    #for i in range(len(plate_box)-1):   
+    #    if not (plate_box[i][0]+plate_box[i][2]) <= (plate_box[i+1][0]+plate_box[i+1][2]) and (plate_box[i][0]+plate_box[i][2])>=(plate_box[i+1][0]) and (plate_box[i][1]+plate_box[i][3])<=(plate_box[i+1][1]+plate_box[i+1][3]) and (plate_box[i][1]+plate_box[i][3])>=(plate_box[i+1][1]) :    
+    #        plate_box_temp.append(plate_box[i])
+    #        print(plate_box_temp)
+    #plate_box=plate_box_temp
     
     # #번호판 인식과정 plate_box에서 number_box에 있는게 5개 정도 포함이 되는 경우 번호판이라 칭함 # 중심으로 생각새헛 ㅗㅇㄹ
     # valid_plate=[]
@@ -124,7 +124,7 @@ def detection() :
     # for i in range(len(valid_plate)-1):
     #     if plate_box[valid_plate[i]][0] == plate_box[valid_plate[i+1]][0] or plate_box[valid_plate[i]][1] == plate_box[valid_plate[i+1]][1] or plate_box[valid_plate[i]][2] == plate_box[valid_plate[i+1]][2] or plate_box[valid_plate[i]][3] == plate_box[valid_plate[i+1]][3]:
     #         valid_plate_temp.append(valid_plate[i])
-    
+
     valid_plate_temp=[]
     cnt=[0,0,0]
     #차량 인식 과정
@@ -145,21 +145,20 @@ def detection() :
                 cnt[2] = 3
     
     valid_plate=valid_plate_temp
-    
     #번호판 출력과정 
-    number_plate={}
+    number_plate = {}
     for i in range(len(cnt)):
-        if not (cnt[i] == 0) :
+        if (cnt[i] != 0) :
             number_plate[i+1] =  (copy_img[plate_box[valid_plate[i]][1] : plate_box[valid_plate[i]][3]+ plate_box[valid_plate[i]][1], plate_box[valid_plate[i]][0] :  plate_box[valid_plate[i]][0]  + plate_box[valid_plate[i]][2] ])
     
-    # for i in range(len(cnt)):
-    #     if not (cnt[i] == 0) :
-    #         cv2.imshow("show",number_plate[i])
-    #         cv2.waitKey(0)
+    for i in range(len(cnt)):
+        if not (cnt[i] == 0) :
+            cv2.imshow("show",number_plate[i+1])
+            cv2.waitKey(0)
     
     for i in range(len(cnt)):
         if not (cnt[i] == 0) :
-            cv2.imwrite(str(nowDatetime)+"plate_"+str(cnt[i])+".png",number_plate[i])
+            cv2.imwrite(str(nowDatetime)+"plate_"+str(cnt[i])+".png",number_plate[i+1])
 
     return number_plate
 
@@ -188,14 +187,14 @@ if __name__ == '__main__':
 
     number_plate = detection() 
     # img = cv2.imread(args["image"])
-
     # x = np.expand_dims(resize_and_normailze(img), axis=0)
     # t = time()
     # print(net.predict(x, classnames))
     # print(time() - t)
     # cv2.imshow("lp", img)
     # cv2.waitKey(0)
-    if number_plate[1] :
+    if 1 in number_plate :
+        print("`1")
         img = number_plate[1]
         x = np.expand_dims(resize_and_normailze(img), axis=0)
         t = time()
@@ -205,7 +204,7 @@ if __name__ == '__main__':
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-    if number_plate[2] :
+    if 2 in number_plate :
         img = number_plate[2]
         x = np.expand_dims(resize_and_normailze(img), axis=0)
         t = time()
@@ -215,12 +214,12 @@ if __name__ == '__main__':
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-    if number_plate[3] :
+    if 3 in number_plate :
         img = number_plate[3]
         x = np.expand_dims(resize_and_normailze(img), axis=0)
         t = time()
         print(net.predict(x, classnames))
         print(time() - t)
-        cv2.imshow("lp", img)
+        cv2.imshow("3", img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
