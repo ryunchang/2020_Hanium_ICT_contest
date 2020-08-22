@@ -148,16 +148,16 @@ def detection() :
     #번호판 출력과정 
     number_plate = {}
     for i in range(len(cnt)):
-        if not (cnt[i] == 0) :
+        if not (cnt[i] == int(0)) :
             number_plate[i+1] =  (copy_img[plate_box[valid_plate[i]][1] : plate_box[valid_plate[i]][3]+ plate_box[valid_plate[i]][1], plate_box[valid_plate[i]][0] :  plate_box[valid_plate[i]][0]  + plate_box[valid_plate[i]][2] ])
     
     for i in range(len(cnt)):
-        if not (cnt[i] == 0) :
+        if not (cnt[i] == int(0)) :
             cv2.imshow("show",number_plate[i+1])
             cv2.waitKey(0)
     
     for i in range(len(cnt)):
-        if not (cnt[i] == 0) :
+        if not (cnt[i] == int(0)) :
             cv2.imwrite(str(nowDatetime)+"plate_"+str(cnt[i])+".png",number_plate[i+1])
 
     return number_plate
