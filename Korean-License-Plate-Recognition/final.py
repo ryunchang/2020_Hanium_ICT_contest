@@ -72,7 +72,6 @@ def detection() :
             number_box.append(cv2.boundingRect(cnt))
     
     
-    cv2.imwrite("boxing.jpg",img_color)
     
     # plate_box 버블정렬
     for i in range(len(plate_box)): 
