@@ -11,7 +11,7 @@ import datetime
 from model import LPRNet
 from loader import resize_and_normailze
 
-url = 'rtsp://admin:12341234!@192.168.1.108:554/cam/realmonitor?channel=1&subtype=0'
+url = 'rtsp://admin:12341234!@192.168.1.108:554'
 
 classnames = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
               "가", "나", "다", "라", "마", "거", "너", "더", "러",
@@ -25,17 +25,18 @@ def detection() :
     now=datetime.datetime.now()
     nowDatetime = now.strftime('%Y-%m-%d %H:%M:%S ')
 
-    cap = cv2.VideoCapture(url)
-    ret, img_color = cap.read()
-    #img_color = cv2.imread("1234.jpg", cv2.IMREAD_COLOR)
+    #cap = cv2.VideoCapture(url)
+    #ret, img_color = cap.read()
+    img_color = cv2.imread("1234.jpg", cv2.IMREAD_COLOR)
     img_color = cv2.resize(img_color,dsize=(2688,1520),interpolation=cv2. INTER_AREA)
-    
+    cv2.imshow("Ds", img_color)
+    cv2.waitKey(0)
     height,width,channel = img_color.shape
     
     copy_img=img_color.copy()
     
     gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
-    blur = cv2.GaussianBlur(gray, (3,3), 3)
+    blur = cv2.GaussianBlur(gray, (1,1), 3)
     canny = cv2.Canny(blur, 100, 100)
     _, contours,hierarchy = cv2.findContours(canny, mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_SIMPLE)
     
@@ -74,7 +75,8 @@ def detection() :
             cv2.rectangle(img_color,(x,y),(x+w, y+h), (255, 0,0), 1)
             number_box.append(cv2.boundingRect(cnt))
     
-    
+    cv2.imshow("d", img_color)
+    cv2.waitKey(0)
     
     # plate_box 버블정렬
     for i in range(len(plate_box)): 
@@ -162,7 +164,7 @@ def detection() :
     for i in range(len(cnt)):
         if not (cnt[i] == 0) :
             cv2.imwrite(str(nowDatetime)+"plate_"+str(cnt[i])+".png",number_plate[i+1])
-
+    print(number_plate)
     return number_plate
 
     # cv2.imshow('1', number_plate_1)
