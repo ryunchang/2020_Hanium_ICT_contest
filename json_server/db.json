@@ -1,32 +1,32 @@
 {
   "lot": [
     {
-      "id": 1,
+      "id": "1-1",
       "number": "28너1818",
       "ultrasonic": true
-      "image": 
+      "first":"2009112011",
+      "last":"2009112020"
     },
     {
-      "id": 2,
-      "content": "CSS",
-      "completed": false
+       "id": "1-2",
+      "number": "11나1123",
+      "ultrasonic": true
+      "first":"2009111011",
+      "last":"2009111920"
     },
     {
-      "id": 3,
-      "content": "Javascript",
-      "completed": true
-    }
+      "id": "2-1",
+      "number": "28너1818",
+      "ultrasonic": true
+      "first":,
+      "last":
+    },
+    {
+       "id": "2-2",
+      "number": "11나1123",
+      "ultrasonic": true
+      "first":,
+      "last":
+    },
   ],
-  "users": [
-    {
-      "id": 1,
-      "name": "Lee",
-      "role": "developer"
-    },
-    {
-      "id": 2,
-      "name": "Kim",
-      "role": "designer"
-    }
-  ]
 }
