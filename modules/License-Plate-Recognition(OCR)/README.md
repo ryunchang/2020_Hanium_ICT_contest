@@ -44,8 +44,9 @@ python evaluate.py -l data/test.json -i data/test_images/ -w saved_models/weight
 --------
 
 # *result*
-![Image1](![image](https://user-images.githubusercontent.com/68686603/126833975-8bcfe13e-3a26-44ad-8262-6d59e2001f67.png))
 
-![Image2](![image](https://user-images.githubusercontent.com/68686603/126833997-9233e9cf-0d18-48ec-8c9b-baf43749e769.png))
+![image](https://user-images.githubusercontent.com/68686603/126833975-8bcfe13e-3a26-44ad-8262-6d59e2001f67.png)
 
-![Image3](![image](https://user-images.githubusercontent.com/68686603/126834026-3cb46e53-49e9-4e87-95b0-672180362236.png))
+![image](https://user-images.githubusercontent.com/68686603/126833997-9233e9cf-0d18-48ec-8c9b-baf43749e769.png)
+
+![image](https://user-images.githubusercontent.com/68686603/126834026-3cb46e53-49e9-4e87-95b0-672180362236.png)
