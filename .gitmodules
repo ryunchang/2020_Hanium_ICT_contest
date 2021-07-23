@@ -1,0 +1,3 @@
+[submodule "test_folder"]
+	path = test_folder
+	url = https://lab.hanium.or.kr/20_hi037f/test_folder.git
